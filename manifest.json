@@ -1,0 +1,32 @@
+{
+	"manifest_version": 2,
+
+	"name": "APMDL",
+	"description": "Bulk downloads albums and songs from APM Music",
+	"version": "0.1",
+	"author": "rwlumino",
+
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "index.html"
+	},
+	"permissions": [
+		"https://*/*",
+		"http://*/*",
+		"tabs"
+	],
+	"background": {
+		"scripts": [
+			"/resources/js/background.js"
+		],
+		"persistent": true
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.apmmusic.com/*"
+			],
+			"js": ["/resources/libraries/js/jquery.min.js", "/resources/js/core.js", "/resources/libraries/js/multi-download.js"]
+		}
+	]
+}
